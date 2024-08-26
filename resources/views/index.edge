@@ -1,0 +1,14 @@
+<form method="post" action="/create">
+    {{ csrfField() }}
+    <input name="title" />
+    <button>Add</button>
+</form>
+
+@each(todo in todos)
+<li>{{todo.title}} | {{todo.status}} |
+
+    <a href="{{route('toggle', {id: todo.id})}}">
+        {{todo.status === 'Done' ? 'Mark Not done' : 'Mark Done'}}
+    </a>
+</li>
+@end
